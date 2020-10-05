@@ -14,7 +14,6 @@ public class Life : MonoBehaviour {
 	public Color nightSkyColor;
 
 	private readonly float dayLightIntensity = 1f;
-	private readonly float nightLightIntensity = 0.2f;
 	private PlayerMovement player;
 	private SpriteRenderer playerSprite;
 	private PlayerUI playerUI;
@@ -28,6 +27,15 @@ public class Life : MonoBehaviour {
     }
 
     private void Start() {
+		playerUI.UpdateEnergy();
+		canMove = true;
+		playerUI.FadeScreen(false);
+		SetAgeSprite();
+		ChangeToDay();
+		CheckStartPoint();
+	}
+
+	public void ResetGame() {
 		playerUI.UpdateEnergy();
 		canMove = true;
 		playerUI.FadeScreen(false);
@@ -79,10 +87,19 @@ public class Life : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		PlayerData.Interact(index);
 		playerUI.UpdateEnergy();
+		HealthData health = PlayerData.CheckHealth();
+		CheckHealth(health);
 		SetAgeSprite();
 		playerUI.FadeScreen(false);
-		yield return new WaitForSeconds(1f);
 		canMove = true;
+		yield return new WaitForSeconds(1f);		
+	}
+
+	private void CheckHealth(HealthData health) {
+		if(health.isDead) {
+			PlayerData.Die();
+			playerUI.OpenDeathUI($"Age: {health.age}", $"Cause of death: {health.cause}");
+		}
 	}
 
 	public void ChangingScene(string sceneName) {
@@ -106,15 +123,6 @@ public class Life : MonoBehaviour {
 			sky.color = daySkyColor;
 		}		
 	}
-
-    private void ChangeToNight() {
-		if(sun) {
-			sun.intensity = nightLightIntensity;
-		}
-		if(sky) {
-			sky.color = nightSkyColor;
-		}		
-    }
 
 	private void LoadSceneAsynchronously(string sceneName) {
 		SceneManager.LoadSceneAsync(sceneName);

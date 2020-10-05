@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4763401673427317109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4763401673427317108}
+  - component: {fileID: 4763401673427317111}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4763401673427317108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763401673427317109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4763401673427317111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763401673427317109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b037958746c064e42afe896751156b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - audioName: Soundtrack
+    audioClip: {fileID: 8300000, guid: e305880c4292c0d40a13d5358095b6df, type: 3}
+    volume: 0.7
+    currentVolume: 0
+    pitch: 1
+    currentPitch: 0
+    looping: 1
+    randomizeVolume: 0
+    randomizePitch: 0
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - audioName: Walk
+    audioClip: {fileID: 8300000, guid: 00c830b01e61ca840824fe7e34cdd15f, type: 3}
+    volume: 0.7
+    currentVolume: 0
+    pitch: 1
+    currentPitch: 0
+    looping: 0
+    randomizeVolume: 0
+    randomizePitch: 0
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - audioName: Door
+    audioClip: {fileID: 8300000, guid: 3d8e5df984e0fa54e8d3f01d30ecc175, type: 3}
+    volume: 0.7
+    currentVolume: 0
+    pitch: 1
+    currentPitch: 0
+    looping: 0
+    randomizeVolume: 0
+    randomizePitch: 0
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - audioName: Interact
+    audioClip: {fileID: 8300000, guid: 942195228f9ef8b47ac1efd71f1903aa, type: 3}
+    volume: 0.7
+    currentVolume: 0
+    pitch: 1
+    currentPitch: 0
+    looping: 0
+    randomizeVolume: 0
+    randomizePitch: 0
+    volumeRandomness: 0
+    pitchRandomness: 0

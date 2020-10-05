@@ -8,12 +8,6 @@ public class Interactable : MonoBehaviour {
 	public string description;
 	private bool interacted = false;
 
-	// Hobby indexes
-	// 0: ipad
-	// 1: toys
-	// 2: biking
-	// 3: tv
-
 	private PlayerUI playerUI;
 	private Life life;
 
@@ -30,7 +24,7 @@ public class Interactable : MonoBehaviour {
 		if(col.CompareTag("Player")) {
 			playerHere = true;
 			if(playerUI) {
-				playerUI.SetUI(true, false);
+				playerUI.SetUI(true, false, description);
 			}
 		}
 	}
@@ -38,7 +32,7 @@ public class Interactable : MonoBehaviour {
 	private void OnTriggerExit2D(Collider2D col) {
 		if(col.CompareTag("Player")) {
 			playerHere = false;
-			playerUI.SetUI(false, false);
+			playerUI.SetUI(false, false, "");
 		}
 	}
 
@@ -48,10 +42,17 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
-	private void Interact() {		
+	private void Interact() {
 		if(!interacted) {
+			AudioManager.audioManager.PlaySound("Interact");
 			life.Interact(index);
 		}
+		StartCoroutine(InteractCountdown());
+	}
+
+	private IEnumerator InteractCountdown() {
 		interacted = true;
+		yield return new WaitForSeconds(1.5f);
+		interacted = false;
 	}
 }
