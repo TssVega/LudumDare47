@@ -7,8 +7,15 @@ public class PlayerMovement : MonoBehaviour {
 		get; set;
 	} = 7f;
 
+    public float[] currentLevelXBounds;
+
     private Vector2 movementVector;
     private bool lastMovedRight = true;
+    private Life life;
+
+    private void Awake() {
+        life = FindObjectOfType<Life>();
+    }
 
     private void Start() {
         movementVector = Vector2.zero;
@@ -34,6 +41,15 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Move() {
+        if(!life.canMove) {
+            return;
+        }
         transform.Translate(movementVector * MoveSpeed * Time.deltaTime);
+        if(transform.position.x < currentLevelXBounds[0]) {
+            transform.position = new Vector3(currentLevelXBounds[0], transform.position.y, 0f);
+        }
+        if(transform.position.x > currentLevelXBounds[1]) {
+            transform.position = new Vector3(currentLevelXBounds[1], transform.position.y, 0f);
+        }
     }
 }

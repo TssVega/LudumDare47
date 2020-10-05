@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enums : MonoBehaviour {
+public class Enums {
+    
+}
 
+public enum Age {
+    Child, Young, Adult, Old, Dead
 }
 
 public enum Wealth {
@@ -10,7 +14,7 @@ public enum Wealth {
 }
 
 public enum Childhood {
-    None, Inside, Outside
+    None, Ipad, Toys, Biking
 }
 
 public enum TeenagePersonality {
